@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Administración | Precios HL</title>
+
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         PANTALLA DE LOGIN
+    ========================== -->
+
+    <section id="pantallaLogin" class="login-container">
+
+        <div class="login-card">
+
+            <div class="login-icon">
+                🔐
+            </div>
+
+            <h1>Panel de administración</h1>
+
+            <p>Inicia sesión para administrar los precios.</p>
+
+            <form id="formLogin">
+
+                <label for="correoLogin">
+                    Correo
+                </label>
+
+                <input
+                    type="email"
+                    id="correoLogin"
+                    placeholder="Tu correo"
+                    required
+                >
+
+                <label for="passwordLogin">
+                    Contraseña
+                </label>
+
+                <input
+                    type="password"
+                    id="passwordLogin"
+                    placeholder="Tu contraseña"
+                    required
+                >
+
+                <button type="submit" class="btn-principal">
+                    Iniciar sesión
+                </button>
+
+                <p id="mensajeLogin" class="mensaje-login"></p>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PANEL DE ADMINISTRACIÓN
+    ========================== -->
+
+    <main id="panelAdmin" class="panel-admin" style="display:none;">
+
+        <!-- ENCABEZADO -->
+
+        <header class="admin-header">
+
+            <div>
+
+                <span class="admin-badge">
+                    ADMINISTRACIÓN
+                </span>
+
+                <h1>
+                    Precios Horse Life
+                </h1>
+
+                <p>
+                    Administra productos, patrones y eventos.
+                </p>
+
+            </div>
+
+            <button id="botonCerrarSesion" class="btn-cerrar">
+                Cerrar sesión
+            </button>
+
+        </header>
+
+
+        <!-- =========================
+             AGREGAR / EDITAR PRODUCTO
+        ========================== -->
+
+        <section class="admin-section formulario-section">
+
+            <div class="section-title">
+
+                <div>
+                    <span class="section-icon">📦</span>
+
+                    <div>
+                        <h2 id="tituloFormulario">
+                            Agregar producto
+                        </h2>
+
+                        <p>
+                            Añade un nuevo artículo a la base de datos.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <form id="formItem">
+
+                <div class="form-grid">
+
+                    <!-- NOMBRE -->
+
+                    <div class="campo campo-grande">
+
+                        <label for="nombre">
+                            Nombre del producto
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nombre"
+                            placeholder="Ej. Sombrero de primavera"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- CATEGORÍA -->
+
+                    <div class="campo">
+
+                        <label for="categoria">
+                            Categoría
+                        </label>
+
+                        <select id="categoria" required>
+
+                            <option value="">
+                                Selecciona una categoría
+                            </option>
+
+                            <option value="Sombreros">
+                                🎩 Sombreros
+                            </option>
+
+                            <option value="Boca">
+                                👄 Boca
+                            </option>
+
+                            <option value="Brida">
+                                🐴 Brida
+                            </option>
+
+                            <option value="Montura">
+                                🏇 Montura
+                            </option>
+
+                            <option value="Calcetines">
+                                🧦 Calcetines
+                            </option>
+
+                            <option value="Cadera">
+                                ✨ Cadera
+                            </option>
+
+                            <option value="Rastros">
+                                🌟 Rastros
+                            </option>
+
+                            <option value="Mascotas">
+                                🐾 Mascotas
+                            </option>
+
+                            <option value="Pociones">
+                                🧪 Pociones
+                            </option>
+
+                            <option value="Conjunto">
+                                👗 Conjunto
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- PATRÓN -->
+
+                    <div class="campo">
+
+                        <label for="patron">
+                            Patrón
+                        </label>
+
+                        <select id="patron">
+
+                            <option value="">
+                                Sin patrón
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- EVENTO -->
+
+                    <div class="campo">
+
+                        <label for="evento">
+                            Evento
+                        </label>
+
+                        <select id="evento">
+
+                            <option value="">
+                                Sin evento
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- PRECIO MÍNIMO -->
+
+                    <div class="campo">
+
+                        <label for="precioMin">
+                            💰 Precio mínimo
+                        </label>
+
+                        <input
+                            type="number"
+                            id="precioMin"
+                            placeholder="Ej. 500"
+                            min="0"
+                        >
+
+                    </div>
+
+
+                    <!-- PRECIO MÁXIMO -->
+
+                    <div class="campo">
+
+                        <label for="precioMax">
+                            💰 Precio máximo
+                        </label>
+
+                        <input
+                            type="number"
+                            id="precioMax"
+                            placeholder="Ej. 1000"
+                            min="0"
+                        >
+
+                    </div>
+
+
+                    <!-- IMAGEN -->
+
+                    <div class="campo campo-grande">
+
+                        <label for="imagen">
+                            🖼️ URL de la imagen
+                        </label>
+
+                        <input
+                            type="url"
+                            id="imagen"
+                            placeholder="https://..."
+                        >
+
+                        <div
+                            id="vistaPrevia"
+                            class="vista-previa"
+                        >
+                            <span>
+                                La vista previa aparecerá aquí
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- DESCRIPCIÓN -->
+
+                    <div class="campo campo-completo">
+
+                        <label for="descripcion">
+                            Descripción
+                        </label>
+
+                        <textarea
+                            id="descripcion"
+                            rows="4"
+                            placeholder="Escribe una descripción del producto..."
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-buttons">
+
+                    <button
+                        type="submit"
+                        id="botonGuardar"
+                        class="btn-principal"
+                    >
+                        ➕ Guardar producto
+                    </button>
+
+                    <button
+                        type="button"
+                        id="botonCancelar"
+                        class="btn-secundario"
+                        style="display:none;"
+                    >
+                        Cancelar edición
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- =========================
+             BUSCADOR
+        ========================== -->
+
+        <section class="busqueda-section">
+
+            <div class="busqueda-box">
+
+                <span class="busqueda-icon">
+                    🔎
+                </span>
+
+                <input
+                    type="text"
+                    id="busquedaAdmin"
+                    placeholder="Buscar por nombre, categoría, patrón o evento..."
+                >
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PRODUCTOS
+        ========================== -->
+
+        <section class="admin-section">
+
+            <div class="section-title">
+
+                <div>
+
+                    <span class="section-icon">
+                        📋
+                    </span>
+
+                    <div>
+
+                        <h2>
+                            Productos
+                        </h2>
+
+                        <p>
+                            Productos registrados en tu base de datos.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <span
+                    id="contadorProductos"
+                    class="contador"
+                >
+                    0 productos
+                </span>
+
+            </div>
+
+
+            <div id="listaItems" class="lista-items"></div>
+
+        </section>
+
+
+        <!-- =========================
+             PATRONES
+        ========================== -->
+
+        <section class="admin-section opciones-section">
+
+            <div class="section-title">
+
+                <div>
+
+                    <span class="section-icon">
+                        🎨
+                    </span>
+
+                    <div>
+
+                        <h2>
+                            Patrones
+                        </h2>
+
+                        <p>
+                            Agrega patrones para utilizarlos en tus productos.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="agregar-opcion">
+
+                <input
+                    type="text"
+                    id="nuevoPatron"
+                    placeholder="Nombre del nuevo patrón..."
+                >
+
+                <button
+                    id="botonAgregarPatron"
+                    class="btn-principal"
+                >
+                    ➕ Agregar patrón
+                </button>
+
+            </div>
+
+
+            <div
+                id="listaPatrones"
+                class="lista-opciones"
+            ></div>
+
+        </section>
+
+
+        <!-- =========================
+             EVENTOS
+        ========================== -->
+
+        <section class="admin-section opciones-section">
+
+            <div class="section-title">
+
+                <div>
+
+                    <span class="section-icon">
+                        🎉
+                    </span>
+
+                    <div>
+
+                        <h2>
+                            Eventos
+                        </h2>
+
+                        <p>
+                            Agrega eventos para clasificarlos en tus productos.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="agregar-opcion">
+
+                <input
+                    type="text"
+                    id="nuevoEvento"
+                    placeholder="Nombre del nuevo evento..."
+                >
+
+                <button
+                    id="botonAgregarEvento"
+                    class="btn-principal"
+                >
+                    ➕ Agregar evento
+                </button>
+
+            </div>
+
+
+            <div
+                id="listaEventos"
+                class="lista-opciones"
+            ></div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script type="module">
+
+        import {
+            db,
+            auth
+        } from "./firebase-config.js";
+
+
+        import {
+            collection,
+            addDoc,
+            getDocs,
+            updateDoc,
+            deleteDoc,
+            doc
+        } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+
+        import {
+            signInWithEmailAndPassword,
+            onAuthStateChanged,
+            signOut
+        } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+
+        /* =========================
+           ELEMENTOS
+        ========================== */
+
+        const pantallaLogin =
+            document.getElementById("pantallaLogin");
+
+        const panelAdmin =
+            document.getElementById("panelAdmin");
+
+        const formLogin =
+            document.getElementById("formLogin");
+
+        const correoLogin =
+            document.getElementById("correoLogin");
+
+        const passwordLogin =
+            document.getElementById("passwordLogin");
+
+        const mensajeLogin =
+            document.getElementById("mensajeLogin");
+
+
+        const botonCerrarSesion =
+            document.getElementById("botonCerrarSesion");
+
+
+        const formItem =
+            document.getElementById("formItem");
+
+        const nombre =
+            document.getElementById("nombre");
+
+        const categoria =
+            document.getElementById("categoria");
+
+        const patron =
+            document.getElementById("patron");
+
+        const evento =
+            document.getElementById("evento");
+
+        const descripcion =
+            document.getElementById("descripcion");
+
+        const precioMin =
+            document.getElementById("precioMin");
+
+        const precioMax =
+            document.getElementById("precioMax");
+
+        const imagen =
+            document.getElementById("imagen");
+
+        const botonGuardar =
+            document.getElementById("botonGuardar");
+
+        const botonCancelar =
+            document.getElementById("botonCancelar");
+
+        const tituloFormulario =
+            document.getElementById("tituloFormulario");
+
+        const vistaPrevia =
+            document.getElementById("vistaPrevia");
+
+
+        const busquedaAdmin =
+            document.getElementById("busquedaAdmin");
+
+        const listaItems =
+            document.getElementById("listaItems");
+
+        const listaPatrones =
+            document.getElementById("listaPatrones");
+
+        const listaEventos =
+            document.getElementById("listaEventos");
+
+        const nuevoPatron =
+            document.getElementById("nuevoPatron");
+
+        const nuevoEvento =
+            document.getElementById("nuevoEvento");
+
+        const botonAgregarPatron =
+            document.getElementById("botonAgregarPatron");
+
+        const botonAgregarEvento =
+            document.getElementById("botonAgregarEvento");
+
+        const contadorProductos =
+            document.getElementById("contadorProductos");
+
+
+        /* =========================
+           VARIABLES
+        ========================== */
+
+        let productos = [];
+
+        let patrones = [];
+
+        let eventos = [];
+
+        let productoEditando = null;
+
+
+        /* =========================
+           LOGIN
+        ========================== */
+
+        formLogin.addEventListener("submit", async (event) => {
+
+            event.preventDefault();
+
+            const correo = correoLogin.value.trim();
+
+            const password = passwordLogin.value;
+
+            mensajeLogin.textContent = "Iniciando sesión...";
+
+            try {
+
+                await signInWithEmailAndPassword(
+                    auth,
+                    correo,
+                    password
+                );
+
+                mensajeLogin.textContent = "";
+
+            } catch (error) {
+
+                console.error(error);
+
+                mensajeLogin.textContent =
+                    "❌ Correo o contraseña incorrectos.";
+
+            }
+
+        });
+
+
+        /* =========================
+           ESTADO DE SESIÓN
+        ========================== */
+
+        onAuthStateChanged(auth, (usuario) => {
+
+            if (usuario) {
+
+                pantallaLogin.style.display = "none";
+
+                panelAdmin.style.display = "block";
+
+                iniciar();
+
+            } else {
+
+                pantallaLogin.style.display = "flex";
+
+                panelAdmin.style.display = "none";
+
+            }
+
+        });
+
+
+        /* =========================
+           CERRAR SESIÓN
+        ========================== */
+
+        botonCerrarSesion.addEventListener("click", async () => {
+
+            await signOut(auth);
+
+        });
+
+
+        /* =========================
+           CARGAR DATOS
+        ========================== */
+
+        async function iniciar() {
+
+            await cargarProductos();
+
+            await cargarPatrones();
+
+            await cargarEventos();
+
+        }
+
+
+        /* =========================
+           PRODUCTOS
+        ========================== */
+
+        async function cargarProductos() {
+
+            const snapshot =
+                await getDocs(collection(db, "productos"));
+
+            productos = [];
+
+            snapshot.forEach((documento) => {
+
+                productos.push({
+
+                    id: documento.id,
+
+                    ...documento.data()
+
+                });
+
+            });
+
+            mostrarItems(productos);
+
+        }
+
+
+        function mostrarItems(lista) {
+
+            listaItems.innerHTML = "";
+
+            contadorProductos.textContent =
+                `${lista.length} producto${lista.length === 1 ? "" : "s"}`;
+
+
+            if (lista.length === 0) {
+
+                listaItems.innerHTML = `
+
+                    <div class="sin-resultados">
+
+                        <div class="sin-resultados-icon">
+                            📦
+                        </div>
+
+                        <h3>
+                            No hay productos
+                        </h3>
+
+                        <p>
+                            Agrega tu primer producto usando el formulario.
+                        </p>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            lista.forEach((producto) => {
+
+                const tarjeta =
+                    document.createElement("article");
+
+                tarjeta.className = "producto-card";
+
+
+                const imagenProducto =
+                    producto.imagen
+                        ? `
+                            <img
+                                src="${producto.imagen}"
+                                alt="${producto.nombre}"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                            >
+
+                            <div class="imagen-error">
+                                🖼️
+                            </div>
+                        `
+                        : `
+                            <div class="imagen-vacia">
+                                🖼️
+                            </div>
+                        `;
+
+
+                let precioTexto = "Sin precio";
+
+                if (
+                    producto.precioMin !== undefined &&
+                    producto.precioMax !== undefined
+                ) {
+
+                    precioTexto =
+                        `${producto.precioMin} - ${producto.precioMax}`;
+
+                } else if (
+                    producto.precio !== undefined
+                ) {
+
+                    precioTexto =
+                        `${producto.precio}`;
+
+                }
+
+
+                tarjeta.innerHTML = `
+
+                    <div class="producto-imagen">
+
+                        ${imagenProducto}
+
+                    </div>
+
+
+                    <div class="producto-info">
+
+                        <div class="producto-categoria">
+
+                            ${producto.categoria || "Sin categoría"}
+
+                        </div>
+
+                        <h3>
+                            ${producto.nombre || "Sin nombre"}
+                        </h3>
+
+
+                        <div class="producto-etiquetas">
+
+                            ${
+                                producto.patron
+                                ? `<span>🎨 ${producto.patron}</span>`
+                                : ""
+                            }
+
+                            ${
+                                producto.evento
+                                ? `<span>🎉 ${producto.evento}</span>`
+                                : ""
+                            }
+
+                        </div>
+
+
+                        <p class="producto-descripcion">
+
+                            ${
+                                producto.descripcion ||
+                                "Sin descripción."
+                            }
+
+                        </p>
+
+
+                        <div class="producto-precio">
+
+                            💰 ${precioTexto}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="producto-acciones">
+
+                        <button class="btn-editar">
+                            ✏️ Editar
+                        </button>
+
+                        <button class="btn-eliminar">
+                            🗑️ Eliminar
+                        </button>
+
+                    </div>
+
+                `;
+
+
+                const botonEditar =
+                    tarjeta.querySelector(".btn-editar");
+
+
+                const botonEliminar =
+                    tarjeta.querySelector(".btn-eliminar");
+
+
+                botonEditar.addEventListener(
+                    "click",
+                    () => editarProducto(producto)
+                );
+
+
+                botonEliminar.addEventListener(
+                    "click",
+                    () => eliminarProducto(producto.id)
+                );
+
+
+                listaItems.appendChild(tarjeta);
+
+            });
+
+        }
+
+
+        /* =========================
+           AGREGAR / EDITAR
+        ========================== */
+
+        formItem.addEventListener("submit", async (event) => {
+
+            event.preventDefault();
+
+
+            const item = {
+
+                nombre:
+                    nombre.value.trim(),
+
+                categoria:
+                    categoria.value,
+
+                patron:
+                    patron.value,
+
+                evento:
+                    evento.value,
+
+                descripcion:
+                    descripcion.value.trim(),
+
+                precioMin:
+                    Number(precioMin.value),
+
+                precioMax:
+                    Number(precioMax.value),
+
+                imagen:
+                    imagen.value.trim()
+
+            };
+
+
+            try {
+
+                if (productoEditando) {
+
+                    await updateDoc(
+
+                        doc(
+                            db,
+                            "productos",
+                            productoEditando
+                        ),
+
+                        item
+
+                    );
+
+                    alert("✅ Producto actualizado.");
+
+                } else {
+
+                    await addDoc(
+
+                        collection(db, "productos"),
+
+                        item
+
+                    );
+
+                    alert("✅ Producto agregado.");
+
+                }
+
+
+                limpiarFormulario();
+
+                await cargarProductos();
+
+            } catch (error) {
+
+                console.error(error);
+
+                alert(
+                    "❌ Ocurrió un error al guardar el producto."
+                );
+
+            }
+
+        });
+
+
+        /* =========================
+           EDITAR
+        ========================== */
+
+        function editarProducto(producto) {
+
+            productoEditando = producto.id;
+
+
+            nombre.value =
+                producto.nombre || "";
+
+            categoria.value =
+                producto.categoria || "";
+
+            patron.value =
+                producto.patron || "";
+
+            evento.value =
+                producto.evento || "";
+
+            descripcion.value =
+                producto.descripcion || "";
+
+            precioMin.value =
+                producto.precioMin ?? producto.precio ?? "";
+
+            precioMax.value =
+                producto.precioMax ?? producto.precio ?? "";
+
+            imagen.value =
+                producto.imagen || "";
+
+
+            tituloFormulario.textContent =
+                "Editar producto";
+
+            botonGuardar.textContent =
+                "💾 Guardar cambios";
+
+            botonCancelar.style.display =
+                "inline-flex";
+
+
+            actualizarVistaPrevia();
+
+
+            window.scrollTo({
+
+                top: 0,
+
+                behavior: "smooth"
+
+            });
+
+        }
+
+
+        /* =========================
+           CANCELAR EDICIÓN
+        ========================== */
+
+        botonCancelar.addEventListener(
+            "click",
+            limpiarFormulario
+        );
+
+
+        function limpiarFormulario() {
+
+            formItem.reset();
+
+            productoEditando = null;
+
+
+            tituloFormulario.textContent =
+                "Agregar producto";
+
+            botonGuardar.textContent =
+                "➕ Guardar producto";
+
+            botonCancelar.style.display =
+                "none";
+
+
+            vistaPrevia.innerHTML = `
+                <span>
+                    La vista previa aparecerá aquí
+                </span>
+            `;
+
+        }
+
+
+        /* =========================
+           ELIMINAR
+        ========================== */
+
+        async function eliminarProducto(id) {
+
+            const confirmar =
+                confirm(
+                    "¿Seguro que quieres eliminar este producto?"
+                );
+
+
+            if (!confirmar) return;
+
+
+            try {
+
+                await deleteDoc(
+                    doc(db, "productos", id)
+                );
+
+                await cargarProductos();
+
+            } catch (error) {
+
+                console.error(error);
+
+                alert(
+                    "❌ No se pudo eliminar el producto."
+                );
+
+            }
+
+        }
+
+
+        /* =========================
+           VISTA PREVIA
+        ========================== */
+
+        imagen.addEventListener(
+            "input",
+            actualizarVistaPrevia
+        );
+
+
+        function actualizarVistaPrevia() {
+
+            const url =
+                imagen.value.trim();
+
+
+            if (!url) {
+
+                vistaPrevia.innerHTML = `
+                    <span>
+                        La vista previa aparecerá aquí
+                    </span>
+                `;
+
+                return;
+
+            }
+
+
+            vistaPrevia.innerHTML = `
+
+                <img
+                    src="${url}"
+                    alt="Vista previa"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                >
+
+                <span style="display:none;">
+                    ❌ No se pudo cargar la imagen
+                </span>
+
+            `;
+
+        }
+
+
+        /* =========================
+           BUSCADOR
+        ========================== */
+
+        busquedaAdmin.addEventListener(
+            "input",
+            filtrarProductos
+        );
+
+
+        function filtrarProductos() {
+
+            const texto =
+                busquedaAdmin.value
+                    .toLowerCase()
+                    .trim();
+
+
+            const filtrados =
+                productos.filter((producto) => {
+
+                    return (
+
+                        (producto.nombre || "")
+                            .toLowerCase()
+                            .includes(texto)
+
+                        ||
+
+                        (producto.categoria || "")
+                            .toLowerCase()
+                            .includes(texto)
+
+                        ||
+
+                        (producto.patron || "")
+                            .toLowerCase()
+                            .includes(texto)
+
+                        ||
+
+                        (producto.evento || "")
+                            .toLowerCase()
+                            .includes(texto)
+
+                    );
+
+                });
+
+
+            mostrarItems(filtrados);
+
+        }
+
+
+        /* =========================
+           PATRONES
+        ========================== */
+
+        async function cargarPatrones() {
+
+            const snapshot =
+                await getDocs(
+                    collection(db, "patrones")
+                );
+
+
+            patrones = [];
+
+
+            patron.innerHTML = `
+                <option value="">
+                    Sin patrón
+                </option>
+            `;
+
+
+            snapshot.forEach((documento) => {
+
+                const datos =
+                    documento.data();
+
+
+                const item = {
+
+                    id: documento.id,
+
+                    nombre:
+                        datos.nombre
+
+                };
+
+
+                patrones.push(item);
+
+
+                patron.innerHTML += `
+
+                    <option value="${item.nombre}">
+                        ${item.nombre}
+                    </option>
+
+                `;
+
+            });
+
+
+            mostrarPatrones();
+
+        }
+
+
+        async function agregarPatron() {
+
+            const nombrePatron =
+                nuevoPatron.value.trim();
+
+
+            if (!nombrePatron) {
+
+                alert(
+                    "Escribe el nombre del patrón."
+                );
+
+                return;
+
+            }
+
+
+            await addDoc(
+
+                collection(db, "patrones"),
+
+                {
+                    nombre: nombrePatron
+                }
+
+            );
+
+
+            nuevoPatron.value = "";
+
+            await cargarPatrones();
+
+        }
+
+
+        botonAgregarPatron.addEventListener(
+            "click",
+            agregarPatron
+        );
+
+
+        function mostrarPatrones() {
+
+            listaPatrones.innerHTML = "";
+
+
+            patrones.forEach((item) => {
+
+                const elemento =
+                    document.createElement("div");
+
+                elemento.className =
+                    "opcion-card";
+
+
+                elemento.innerHTML = `
+
+                    <span>
+                        🎨 ${item.nombre}
+                    </span>
+
+                    <button>
+                        🗑️
+                    </button>
+
+                `;
+
+
+                elemento
+                    .querySelector("button")
+                    .addEventListener(
+                        "click",
+                        async () => {
+
+                            if (
+                                !confirm(
+                                    `¿Eliminar "${item.nombre}"?`
+                                )
+                            ) return;
+
+
+                            await deleteDoc(
+                                doc(
+                                    db,
+                                    "patrones",
+                                    item.id
+                                )
+                            );
+
+
+                            await cargarPatrones();
+
+                        }
+                    );
+
+
+                listaPatrones.appendChild(elemento);
+
+            });
+
+        }
+
+
+        /* =========================
+           EVENTOS
+        ========================== */
+
+        async function cargarEventos() {
+
+            const snapshot =
+                await getDocs(
+                    collection(db, "eventos")
+                );
+
+
+            eventos = [];
+
+
+            evento.innerHTML = `
+                <option value="">
+                    Sin evento
+                </option>
+            `;
+
+
+            snapshot.forEach((documento) => {
+
+                const datos =
+                    documento.data();
+
+
+                const item = {
+
+                    id: documento.id,
+
+                    nombre:
+                        datos.nombre
+
+                };
+
+
+                eventos.push(item);
+
+
+                evento.innerHTML += `
+
+                    <option value="${item.nombre}">
+                        ${item.nombre}
+                    </option>
+
+                `;
+
+            });
+
+
+            mostrarEventos();
+
+        }
+
+
+        async function agregarEvento() {
+
+            const nombreEvento =
+                nuevoEvento.value.trim();
+
+
+            if (!nombreEvento) {
+
+                alert(
+                    "Escribe el nombre del evento."
+                );
+
+                return;
+
+            }
+
+
+            await addDoc(
+
+                collection(db, "eventos"),
+
+                {
+                    nombre: nombreEvento
+                }
+
+            );
+
+
+            nuevoEvento.value = "";
+
+            await cargarEventos();
+
+        }
+
+
+        botonAgregarEvento.addEventListener(
+            "click",
+            agregarEvento
+        );
+
+
+        function mostrarEventos() {
+
+            listaEventos.innerHTML = "";
+
+
+            eventos.forEach((item) => {
+
+                const elemento =
+                    document.createElement("div");
+
+                elemento.className =
+                    "opcion-card";
+
+
+                elemento.innerHTML = `
+
+                    <span>
+                        🎉 ${item.nombre}
+                    </span>
+
+                    <button>
+                        🗑️
+                    </button>
+
+                `;
+
+
+                elemento
+                    .querySelector("button")
+                    .addEventListener(
+                        "click",
+                        async () => {
+
+                            if (
+                                !confirm(
+                                    `¿Eliminar "${item.nombre}"?`
+                                )
+                            ) return;
+
+
+                            await deleteDoc(
+                                doc(
+                                    db,
+                                    "eventos",
+                                    item.id
+                                )
+                            );
+
+
+                            await cargarEventos();
+
+                        }
+                    );
+
+
+                listaEventos.appendChild(elemento);
+
+            });
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>

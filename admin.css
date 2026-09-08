@@ -1,0 +1,1727 @@
+
+/* =========================================================
+   BLACKTHORN RELIQUIARY
+   ADMINISTRACIÓN
+   NEGRO / MORADO ROSÁCEO / GÓTICO
+========================================================= */
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root {
+
+    --negro: #050506;
+    --negro-2: #080709;
+    --negro-3: #0c090d;
+    --negro-4: #110c12;
+
+    --morado-oscuro: #3d2638;
+    --morado: #704766;
+    --morado-claro: #9d6689;
+    --morado-rosa: #c884b5;
+
+    --texto: #eee8ed;
+    --texto-suave: #b8aeb7;
+    --texto-oscuro: #716a72;
+
+    --borde: #211923;
+    --borde-claro: #382536;
+
+    --rojo: #8f3157;
+    --rojo-claro: #b95d7e;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    color: var(--texto);
+
+    background:
+
+        radial-gradient(
+            circle at 75% 10%,
+            rgba(105, 48, 100, 0.08),
+            transparent 25%
+        ),
+
+        radial-gradient(
+            circle at 30% 80%,
+            rgba(85, 38, 85, 0.05),
+            transparent 25%
+        ),
+
+        #050506;
+}
+
+
+/* =========================================================
+   FONDO CON IMAGEN
+   =========================================================
+
+   Para poner una imagen de fondo puedes agregar
+   una URL aquí:
+
+   background-image: url("imagenes/fondo.jpg");
+
+========================================================= */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -2;
+
+    background-image: var(--imagen-fondo);
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    opacity: 0.08;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CAPA OSCURA SOBRE LA IMAGEN
+========================================================= */
+
+body::after {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -1;
+
+    background:
+        linear-gradient(
+            rgba(5, 5, 6, 0.88),
+            rgba(5, 5, 6, 0.97)
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+
+::-webkit-scrollbar-track {
+    background: #050506;
+}
+
+
+::-webkit-scrollbar-thumb {
+
+    background: #2b1b28;
+
+    border-radius: 10px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+    background: #704766;
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+#pantallaLogin {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 25px;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(112, 71, 102, 0.12),
+            transparent 40%
+        ),
+
+        #050506;
+}
+
+
+/* Imagen decorativa opcional del login */
+
+#pantallaLogin::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 450px;
+    height: 450px;
+
+    background-image: var(--imagen-login);
+
+    background-size: cover;
+
+    background-position: center;
+
+    opacity: 0.08;
+
+    filter: grayscale(40%);
+
+    pointer-events: none;
+}
+
+
+#pantallaLogin form {
+
+    position: relative;
+
+    width: min(410px, 100%);
+
+    padding: 40px 35px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            #0d0a0e,
+            #070608
+        );
+
+    border: 1px solid #2a1e29;
+
+    border-radius: 4px;
+
+    box-shadow:
+
+        0 25px 80px rgba(0, 0, 0, 0.7),
+
+        0 0 40px
+        rgba(157, 78, 130, 0.05);
+}
+
+
+/* Marco interior */
+
+#pantallaLogin form::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 8px;
+
+    border: 1px solid #171117;
+
+    pointer-events: none;
+}
+
+
+#pantallaLogin h1 {
+
+    margin-bottom: 30px;
+
+    text-align: center;
+
+    color: #e8dce6;
+
+    font-size: 27px;
+
+    font-weight: normal;
+
+    letter-spacing: 6px;
+
+    text-shadow:
+        0 0 25px
+        rgba(188, 111, 161, 0.12);
+}
+
+
+#pantallaLogin label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #80536e;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+input,
+textarea,
+select {
+
+    width: 100%;
+
+    padding: 13px 14px;
+
+    color: #e8dfe6;
+
+    background: #09080a;
+
+    border: 1px solid #2c202b;
+
+    border-radius: 3px;
+
+    outline: none;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 13px;
+
+    transition:
+        border-color 0.25s,
+        box-shadow 0.25s,
+        background 0.25s;
+}
+
+
+input::placeholder,
+textarea::placeholder {
+
+    color: #514b53;
+}
+
+
+input:focus,
+textarea:focus,
+select:focus {
+
+    background: #0c090d;
+
+    border-color: #80516e;
+
+    box-shadow:
+        0 0 20px
+        rgba(157, 78, 130, 0.09);
+}
+
+
+textarea {
+
+    min-height: 100px;
+
+    resize: vertical;
+}
+
+
+select option {
+
+    background: #0c090d;
+
+    color: #eee8ed;
+}
+
+
+/* =========================================================
+   BOTONES
+========================================================= */
+
+button {
+
+    padding: 12px 18px;
+
+    color: #e8dce6;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #211622,
+            #130d15
+        );
+
+    border: 1px solid #4b3043;
+
+    border-radius: 3px;
+
+    cursor: pointer;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+
+    transition: all 0.25s ease;
+}
+
+
+button:hover {
+
+    color: #fff;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #39243a,
+            #211322
+        );
+
+    border-color: #9d6689;
+
+    box-shadow:
+        0 0 22px
+        rgba(157, 78, 130, 0.12);
+
+    transform: translateY(-2px);
+}
+
+
+button:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   PANEL ADMIN
+========================================================= */
+
+#panelAdmin {
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 75% 10%,
+            rgba(105, 48, 100, 0.06),
+            transparent 25%
+        );
+}
+
+
+/* =========================================================
+   ENCABEZADO
+========================================================= */
+
+header {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
+    padding: 22px 35px;
+
+    background:
+        rgba(5, 5, 6, 0.94);
+
+    border-bottom: 1px solid #211923;
+
+    backdrop-filter: blur(12px);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+header h1 {
+
+    color: #e8dce6;
+
+    font-size: 22px;
+
+    font-weight: normal;
+
+    letter-spacing: 5px;
+
+    text-shadow:
+        0 0 20px
+        rgba(188, 111, 161, 0.1);
+}
+
+
+/* =========================================================
+   LOGO DEL ADMIN
+========================================================= */
+
+.logo-admin {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+.logo-admin img {
+
+    width: 45px;
+
+    height: 45px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 1px solid #704766;
+
+    box-shadow:
+        0 0 20px
+        rgba(171, 92, 145, 0.08);
+}
+
+
+/* Espacio para logo si todavía no tienes imagen */
+
+.logo-admin-placeholder {
+
+    width: 45px;
+
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    border: 1px dashed #704766;
+
+    color: #704766;
+
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   CERRAR SESIÓN
+========================================================= */
+
+#botonCerrarSesion {
+
+    background:
+        #100b10;
+
+    border-color:
+        #382536;
+
+    color:
+        #9d6689;
+}
+
+
+#botonCerrarSesion:hover {
+
+    background:
+        #241522;
+
+    border-color:
+        #8f3157;
+
+    color:
+        #d99ab4;
+
+    box-shadow:
+        0 0 20px
+        rgba(143, 49, 87, 0.12);
+}
+
+
+/* =========================================================
+   CONTENIDO
+========================================================= */
+
+main {
+
+    width: min(1450px, 94%);
+
+    margin: auto;
+
+    padding: 50px 0 80px;
+}
+
+
+/* =========================================================
+   TÍTULOS
+========================================================= */
+
+h2 {
+
+    color: #d9cdd7;
+
+    font-size: 25px;
+
+    font-weight: normal;
+
+    letter-spacing: 2px;
+}
+
+
+h2::before {
+
+    content: "✦ ";
+
+    color: #704766;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   SECCIONES
+========================================================= */
+
+section {
+
+    position: relative;
+
+    margin-bottom: 55px;
+
+    padding: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(13, 10, 14, 0.97),
+            rgba(7, 6, 8, 0.97)
+        );
+
+    border: 1px solid #211923;
+
+    border-radius: 3px;
+
+    box-shadow:
+        0 20px 60px
+        rgba(0, 0, 0, 0.35);
+}
+
+
+/* Marco interno */
+
+section::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 7px;
+
+    border: 1px solid #141015;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   FORMULARIO DE PRODUCTO
+========================================================= */
+
+#formItem {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 17px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+#formItem textarea,
+#formItem #descripcion {
+
+    grid-column: 1 / -1;
+}
+
+
+#formItem #imagen {
+
+    grid-column: 1 / -1;
+}
+
+
+/* Botones del formulario */
+
+#botonGuardar,
+#botonCancelar {
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   VISTA PREVIA
+========================================================= */
+
+#vistaPrevia {
+
+    display: none;
+
+    width: 220px;
+
+    height: 140px;
+
+    object-fit: cover;
+
+    margin-top: 10px;
+
+    border: 1px solid #503447;
+
+    background: #080709;
+
+    box-shadow:
+        0 0 25px
+        rgba(157, 78, 130, 0.08);
+}
+
+
+/* =========================================================
+   BUSCADOR
+========================================================= */
+
+#busquedaAdmin {
+
+    display: block;
+
+    width: min(700px, 100%);
+
+    height: 55px;
+
+    margin: 0 auto 35px;
+
+    padding: 0 22px;
+
+    border-radius: 50px;
+
+    background: #0b0a0c;
+
+    border: 1px solid #2c202b;
+
+    font-size: 14px;
+}
+
+
+#busquedaAdmin:hover {
+
+    border-color: #493041;
+}
+
+
+#busquedaAdmin:focus {
+
+    border-color: #80516e;
+
+    box-shadow:
+        0 0 25px
+        rgba(157, 78, 130, 0.10);
+}
+
+
+/* =========================================================
+   DECORACIÓN DEL BUSCADOR
+========================================================= */
+
+#busquedaAdmin::placeholder {
+
+    color: #514b53;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   PRODUCTOS
+   4 POR FILA
+========================================================= */
+
+.lista-items {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 20px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   TARJETA DE PRODUCTO
+========================================================= */
+
+.item {
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0d0a0e,
+            #070608
+        );
+
+    border: 1px solid #211923;
+
+    border-radius: 3px;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.item::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 6px;
+
+    border: 1px solid #171117;
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+
+.item:hover {
+
+    transform: translateY(-5px);
+
+    border-color: #4b3043;
+
+    box-shadow:
+        0 20px 45px
+        rgba(0, 0, 0, 0.55),
+
+        0 0 25px
+        rgba(157, 78, 130, 0.06);
+}
+
+
+/* =========================================================
+   IMAGEN DEL PRODUCTO
+========================================================= */
+
+.item img {
+
+    display: block;
+
+    width: 100%;
+
+    height: 220px;
+
+    object-fit: cover;
+
+    background: #050506;
+
+    border-bottom: 1px solid #211923;
+}
+
+
+/* =========================================================
+   CONTENIDO DEL PRODUCTO
+========================================================= */
+
+.item-contenido {
+
+    display: flex;
+
+    flex-direction: column;
+
+    flex: 1;
+
+    gap: 10px;
+
+    padding: 20px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.item h3 {
+
+    color: #d8cbd6;
+
+    font-size: 18px;
+
+    font-weight: normal;
+
+    letter-spacing: 1px;
+}
+
+
+.item p {
+
+    color: #625b64;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   CATEGORÍA
+========================================================= */
+
+.categoria {
+
+    display: inline-block;
+
+    width: fit-content;
+
+    padding: 5px 10px;
+
+    color: #b96f9f;
+
+    background: rgba(
+        130,
+        66,
+        108,
+        0.10
+    );
+
+    border: 1px solid #3d2638;
+
+    border-radius: 2px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   TAGS
+========================================================= */
+
+.tags {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 5px;
+}
+
+
+.tag {
+
+    padding: 4px 7px;
+
+    color: #716a72;
+
+    background: #0e0b0f;
+
+    border: 1px solid #2a202b;
+
+    border-radius: 2px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   DESCRIPCIÓN
+========================================================= */
+
+.descripcion {
+
+    display: -webkit-box;
+
+    -webkit-box-orient: vertical;
+
+      -webkit-line-clamp: 3;
+
+    overflow: hidden;
+
+    min-height: 58px;
+}
+
+
+/* =========================================================
+   PRECIO
+========================================================= */
+
+.precio {
+
+    margin-top: auto;
+
+    padding-top: 14px;
+
+    border-top: 1px solid #211923;
+
+    color: #b96f9f;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 13px;
+
+    letter-spacing: 1px;
+
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   BOTONES DE PRODUCTO
+========================================================= */
+
+.item-botones {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 7px;
+
+    margin-top: 10px;
+}
+
+
+.item-botones button {
+
+    padding: 9px 5px;
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+}
+
+
+/* EDITAR */
+
+.item-botones .editar {
+
+    color: #b985a8;
+
+    background: #110c12;
+
+    border-color: #3d2638;
+}
+
+
+.item-botones .editar:hover {
+
+    color: #e0c5d7;
+
+    background: #211421;
+
+    border-color: #704766;
+}
+
+
+/* ELIMINAR */
+
+.item-botones .eliminar {
+
+    color: #9d536f;
+
+    background: #11090d;
+
+    border-color: #3a202b;
+}
+
+
+.item-botones .eliminar:hover {
+
+    color: #d58ca6;
+
+    background: #29101b;
+
+    border-color: #8f3157;
+
+    box-shadow:
+        0 0 15px
+        rgba(143, 49, 87, 0.10);
+}
+
+
+/* =========================================================
+   PATRONES / EVENTOS
+   6 POR FILA
+========================================================= */
+
+.lista-opciones {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, minmax(0, 1fr));
+
+    gap: 10px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   OPCIONES
+========================================================= */
+
+.opcion {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 8px;
+
+    min-width: 0;
+
+    padding: 13px;
+
+    background: #0a090b;
+
+    border: 1px solid #211923;
+
+    border-radius: 3px;
+
+    transition: all 0.25s ease;
+}
+
+
+.opcion:hover {
+
+    background: #110c12;
+
+    border-color: #4b3043;
+
+    transform: translateY(-2px);
+}
+
+
+.opcion span {
+
+    overflow: hidden;
+
+    color: #716a72;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 11px;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+}
+
+
+.opcion:hover span {
+
+    color: #b8aeb7;
+}
+
+
+/* =========================================================
+   BOTÓN DE ELIMINAR OPCIÓN
+========================================================= */
+
+.opcion button {
+
+    flex-shrink: 0;
+
+    width: 25px;
+
+    height: 25px;
+
+    padding: 0;
+
+    color: #8f3157;
+
+    background: #10090d;
+
+    border: 1px solid #39202b;
+
+    font-size: 11px;
+}
+
+
+.opcion button:hover {
+
+    color: #d58ca6;
+
+    background: #29101b;
+
+    border-color: #8f3157;
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   AGREGAR PATRÓN / EVENTO
+========================================================= */
+
+.agregar-opcion {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 18px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.agregar-opcion input {
+
+    flex: 1;
+}
+
+
+.agregar-opcion button {
+
+    flex-shrink: 0;
+
+    min-width: 150px;
+}
+
+
+/* =========================================================
+   ESPACIO PARA BANNER / IMAGEN DECORATIVA
+=========================================================
+
+   Puedes usar este bloque en el HTML:
+
+   <div class="espacio-banner">
+       <img src="imagenes/banner.jpg">
+   </div>
+
+========================================================= */
+
+.espacio-banner {
+
+    width: 100%;
+
+    min-height: 220px;
+
+    margin-bottom: 45px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(112, 71, 102, 0.10),
+            transparent 60%
+        );
+
+    border: 1px solid #2a1e29;
+
+    border-radius: 3px;
+}
+
+
+.espacio-banner::before {
+
+    content: "✦";
+
+    position: absolute;
+
+    color: #704766;
+
+    font-size: 20px;
+
+    opacity: 0.6;
+}
+
+
+.espacio-banner img {
+
+    width: 100%;
+
+    height: 100%;
+
+    min-height: 220px;
+
+    object-fit: cover;
+
+    opacity: 0.75;
+}
+
+
+/* =========================================================
+   LOGO GRANDE
+========================================================= */
+
+.espacio-logo {
+
+    width: 150px;
+
+    height: 150px;
+
+    margin: 0 auto 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    border-radius: 50%;
+
+    border: 1px solid #704766;
+
+    background: #0c090c;
+
+    box-shadow:
+        0 0 35px
+        rgba(171, 92, 145, 0.08);
+}
+
+
+.espacio-logo img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* =========================================================
+   IMAGEN DE FONDO PARA UNA SECCIÓN
+========================================================= */
+
+.seccion-con-fondo {
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+
+.seccion-con-fondo::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image: var(--imagen-seccion);
+
+    background-size: cover;
+
+    background-position: center;
+
+    opacity: 0.08;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   ORNAMENTOS
+========================================================= */
+
+.ornamento {
+
+    margin: 10px 0 20px;
+
+    text-align: center;
+
+    color: #704766;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+
+.ornamento::before {
+
+    content: "────";
+    
+    margin-right: 10px;
+
+    color: #382536;
+}
+
+
+.ornamento::after {
+
+    content: "────";
+
+    margin-left: 10px;
+
+    color: #382536;
+}
+
+
+/* =========================================================
+   MENSAJES
+========================================================= */
+
+.sin-resultados {
+
+    padding: 45px 20px;
+
+    text-align: center;
+
+    color: #514b53;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================================
+   HR
+========================================================= */
+
+hr {
+
+    margin: 40px 0;
+
+    border: 0;
+
+    border-top: 1px solid #211923;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+
+/* ---------------------------------------------------------
+   1150px
+--------------------------------------------------------- */
+
+@media (max-width: 1150px) {
+
+    .lista-items {
+
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+
+
+    .lista-opciones {
+
+        grid-template-columns:
+            repeat(4, minmax(0, 1fr));
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   900px
+--------------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+    header {
+
+        padding: 20px;
+    }
+
+
+    header h1 {
+
+        font-size: 18px;
+
+        letter-spacing: 3px;
+    }
+
+
+    main {
+
+        width: 92%;
+    }
+
+
+    .lista-items {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+
+    .lista-opciones {
+
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+
+
+    #formItem {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    #formItem textarea,
+    #formItem #descripcion,
+    #formItem #imagen {
+
+        grid-column: auto;
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   600px
+--------------------------------------------------------- */
+
+@media (max-width: 600px) {
+
+    header {
+
+        position: relative;
+
+        flex-direction: column;
+
+        gap: 15px;
+
+        text-align: center;
+    }
+
+
+    main {
+
+        width: 94%;
+
+        padding-top: 30px;
+    }
+
+
+    section {
+
+        padding: 20px;
+
+        margin-bottom: 35px;
+    }
+
+
+    .lista-items {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .lista-opciones {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+
+    .agregar-opcion {
+
+        flex-direction: column;
+    }
+
+
+    .agregar-opcion button {
+
+        width: 100%;
+    }
+
+
+    .item img {
+
+        height: 240px;
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   400px
+--------------------------------------------------------- */
+
+@media (max-width: 400px) {
+
+    .lista-opciones {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    #pantallaLogin form {
+
+        padding: 30px 20px;
+    }
+
+
+    header h1 {
+
+        font-size: 16px;
+    }
+
+}
+
+
+/* =========================================================
+   SEPARACIÓN ENTRE TÍTULOS Y TEXTO
+========================================================= */
+
+/* Títulos de las secciones */
+section h2 {
+    margin-bottom: 25px !important;
+}
+
+/* Títulos de los productos */
+.item h3 {
+    margin-top: 18px !important;
+    margin-bottom: 15px !important;
+}
+
+/* Texto debajo de los títulos */
+.item p {
+    margin-top: 0 !important;
+    margin-bottom: 12px !important;
+    line-height: 1.8;
+}
+
+/* Títulos de opciones: patrones y eventos */
+.opcion h3 {
+    margin-top: 15px !important;
+    margin-bottom: 12px !important;
+}
+
+/* Si tienes títulos generales */
+h1 {
+    margin-bottom: 30px !important;
+}
+
+h2 {
+    margin-bottom: 25px !important;
+}
+
+h3 {
+    margin-bottom: 15px !important;
+}
+
+/* Etiquetas de los formularios */
+label {
+    display: block;
+    margin-bottom: 10px !important;
+}
+
+/* Separación entre cada elemento del formulario */
+.form-grupo {
+    margin-bottom: 20px;
+}
+
