@@ -278,36 +278,30 @@
                     </div>
 
 
-<div class="campo campo-grande">
+                    <!-- IMAGEN -->
 
-    <label for="imagenArchivo">
-        🖼️ Imagen del producto
-    </label>
+                    <div class="campo campo-grande">
 
-    <!-- Elegir imagen desde la computadora / galería -->
-    <input
-        type="file"
-        id="imagenArchivo"
-        accept="image/png, image/jpeg, image/jpg, image/webp, image/gif"
-    >
+                        <label for="imagen">
+                            🖼️ URL de la imagen
+                        </label>
 
-    <p style="text-align:center; margin:10px 0;">
-        — o pega una captura con Ctrl + V —
-    </p>
+                        <input
+                            type="url"
+                            id="imagen"
+                            placeholder="https://..."
+                        >
 
-    <!-- URL opcional -->
-    <input
-        type="url"
-        id="imagen"
-        placeholder="También puedes pegar una URL de imagen"
-    >
+                        <div
+                            id="vistaPrevia"
+                            class="vista-previa"
+                        >
+                            <span>
+                                La vista previa aparecerá aquí
+                            </span>
+                        </div>
 
-    <!-- Vista previa -->
-    <div id="vistaPrevia" class="vista-previa">
-        <span>La vista previa aparecerá aquí</span>
-    </div>
-
-</div>
+                    </div>
 
 
                     <!-- DESCRIPCIÓN -->
@@ -1612,7 +1606,6 @@
 
 
     </script>
-    <script type="module" src="./Admin.js"></script>
 
 </body>
 
